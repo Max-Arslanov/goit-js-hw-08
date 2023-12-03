@@ -1,5 +1,6 @@
-import 'simplelightbox/dist/simple-lightbox.min.css';
-import SimpleLightbox from 'simplelightbox';
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
+
 // Add imports above this line
 
 import { galleryItems } from './gallery-items';
@@ -32,9 +33,15 @@ function onGalleryItemClick(event) {
 
   const largeImageUrl = target.dataset.source;
 
-  const instance = new SimpleLightbox(`
-    <img src="${largeImageUrl}" alt="${target.alt}" />
-  `);
+  const instance = new SimpleLightbox({
+  items: [
+    {
+      src: largeImageUrl,
+      title: target.alt
+    }
+  ]
+});
+
 
   instance.show();
 }
